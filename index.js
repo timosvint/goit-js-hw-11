@@ -1,0 +1,12 @@
+import{a as c,S as u,i}from"./assets/vendor-Dy2ZTtfi.js";(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))o(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const a of r.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&o(a)}).observe(document,{childList:!0,subtree:!0});function s(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function o(e){if(e.ep)return;e.ep=!0;const r=s(e);fetch(e.href,r)}})();const d="https://pixabay.com/api/",f="50890358-614794b793de10968b1ca8154";function p(t){return c({method:"get",url:d,params:{key:f,q:t,image_type:"photo",orientation:"horizontal",safesearch:!0}}).then(n=>n.data)}const m=new u(".gallery a",{captionsData:"alt",captionDelay:250});function y(){m.refresh()}function h(t){const n=t.map(o=>` <li class="gallery-item">
+            <a href="${o.largeImageURL}">
+                <img src="${o.webformatURL}" alt="${o.tags}" loading="lazy" />
+            </a>
+            <div class="info">
+            <p><span class="span-info">Views</span> <br> ${o.views}</p>
+            <p><span class="span-info">Comments</span> <br> ${o.comments}</p>
+            <p><span class="span-info">Downloads </span> <br> ${o.downloads}</p>
+            <p> <span class="span-info"> Likes </span> <br> ${o.likes}</p>
+            </div>
+        </li>`).join("");document.querySelector(".gallery").insertAdjacentHTML("beforeend",n),y()}function g(){const t=document.querySelector(".gallery");t.innerHTML=""}function L(){document.querySelector(".loader").classList.remove("is-hidden")}function b(){document.querySelector(".loader").classList.add("is-hidden")}document.querySelector(".gallery");const l=document.querySelector(".form");document.querySelector("button");function S(t){t.preventDefault();const n=t.currentTarget.elements["search-text"].value;g(),L(),p(n).then(s=>{s.hits.length===0&&i.error({message:"Sorry, there are no images matching your search query. Please try again!",position:"topLeft"}),h(s.hits),l.reset()}).catch(s=>i.error({message:`${s}`,position:"topLeft"})).finally(()=>b())}l.addEventListener("submit",S);
+//# sourceMappingURL=index.js.map
